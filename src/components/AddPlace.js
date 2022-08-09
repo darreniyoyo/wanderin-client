@@ -3,8 +3,6 @@
 import { useState } from "react";
 import axios from "axios";
 
-const API_URL = "http://localhost:5005";
-
 function AddPlace(props) {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
@@ -13,15 +11,15 @@ function AddPlace(props) {
   const handleSubmit = (e) => {      //  <== UPDATE THE FUNCTION
     e.preventDefault();
 
-    // We need the project id when creating the new Place
-    const { projectId } = props;
+    // We need the trip id when creating the new Place
+    const { tripId } = props;
     // Create an object representing the body of the POST request
-    const requestBody = { title, description, projectId };
+    const requestBody = { title, description, tripId };
 
     const storedToken = localStorage.getItem('authToken');
 
     axios
-      .post(`${API_URL}/api/places`,  requestBody,
+      .post(`${process.env.REACT_APP_API_URL}/places`,  requestBody,
       { headers: { Authorization: `Bearer ${storedToken}` } }
     )
       .then((response) => {
@@ -30,8 +28,8 @@ function AddPlace(props) {
         setDescription("");
       
         // Invoke the callback function coming through the props
-        // from the ProjectDetailsPage, to refresh the project details
-        props.refreshProject();
+        // from the tripDetailsPage, to refresh the trip details
+        props.refreshTrip();
       })
       .catch((error) => console.log(error));
   };

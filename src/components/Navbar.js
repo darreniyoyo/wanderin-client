@@ -1,11 +1,7 @@
-// src/components/Navbar.js
 
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { useContext } from "react";                     // <== IMPORT 
 import { AuthContext } from "../context/auth.context";  // <== IMPORT
-
-
-  const { isLoggedIn, user } = useContext(AuthContext);   // <== ADD
 
 
 function Navbar() {
@@ -17,15 +13,15 @@ function Navbar() {
 
   return (
     <nav>
-      <Link to="/">
+      <NavLink to="/">
         <button>Home</button>
-      </Link>
+      </NavLink>
       
       {isLoggedIn && (
         <>
-          <Link to="/projects">
-            <button>Projects</button>
-          </Link>
+          <NavLink to="/trips">
+            <button>Trips</button>
+          </NavLink>
         
           {/*   UPDATE   */}
           <button onClick={logOutUser}>Logout</button>
@@ -35,8 +31,8 @@ function Navbar() {
 
       {!isLoggedIn && (
         <>
-          <Link to="/signup"> <button>Sign Up</button> </Link>
-          <Link to="/login"> <button>Login</button> </Link>
+          <NavLink to="/signup"> <button>Sign Up</button> </NavLink>
+          <NavLink to="/login"> <button>Login</button> </NavLink>
         </>
       )}      
 

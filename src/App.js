@@ -6,7 +6,10 @@ import { Routes, Route } from "react-router-dom"; // <== IMPORT
 import Navbar from "./components/Navbar"; // <== IMPORT
 import HomePage from "./pages/HomePage"; // <== IMPORT
 import TripDetailsPage from "./pages/TripDetailsPage";
-import TripListPage from "./pages/TripListPage"; //  <== IMPORT
+import TripListPage from "./pages/TripListPage";
+import EditTripPage from "./pages/EditTripPage";
+import SignupPage from "./pages/SignupPage";
+import LoginPage from "./pages/LoginPage";
 
 // src/App.js
 // ... previous imports stay unchanged

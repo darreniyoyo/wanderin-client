@@ -1,67 +1,58 @@
-// src/pages/tripDetailsPage.js
-
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { Link, useParams } from "react-router-dom"; // <== IMPORT 
-import AddTrip from "../components/AddTrip";
-import PlaceCard from "../components/PlaceCard";
+import { Link, useParams } from "react-router-dom";
 
-const API_URL = "http://localhost:5005";        // <== ADD
 
-function TripDetailsPage (props) {
-  const [trip, setTrip] = useState(null);
-  const { tripId } = useParams();            // <== ADD
-  
-  
-  // Helper function that makes a GET request to the API
-  // and retrieves the trip by id
-  const getTrip = () => {  
-    const storedToken = localStorage.getItem("authToken");
-    axios
-    .get(
-        `${API_URL}/api/projects/${projectId}`,
-        { headers: { Authorization: `Bearer ${storedToken}` } }
-      )
-      .then((response) => {
-        const oneTrip = response.data;
-        setTrip(oneTrip);
-      })
-      .catch((error) => console.log(error));
-  };
-  
-  
-  useEffect(()=> {                   // <== ADD AN EFFECT
-    getTrip();
-  }, [] );
+function TripDetailsPage(props) {
+    const [trip, setTrip] = useState(null);
 
-  
-  return (
-    <div className="tripDetails">
-      {trip && (
-        <>
-          <h1>{trip.title}</h1>
-          <p>{trip.description}</p>
-        </>
-      )}
+    const { tripId } = useParams();
 
-<AddTrip refreshTrip={getTrip} tripId={tripId} />   
 
-{ trip && trip.places.map((place) => (
-        <PlaceCard key={place._id} {...place} /> 
-      ))} 
-      
+    const getTrip = () => {
+        axios
+            .get(`${process.env.REACT_APP_API_URL}/Trips/${tripId}`)
+            .then((response) => {
+                const oneTrip = response.data;
+                setTrip(oneTrip);
+            })
+            .catch((error) => console.log(error));
+    };
 
-      <Link to="/trips">
-        <button>Back to trips</button>
-      </Link>
-      
+    useEffect(() => {
+        getTrip();
+    }, []);
 
-      <Link to={`/trips/edit/${tripId}`}>
-        <button>Edit Trip</button>
-      </Link>      
-      
-    </div>
-  );
+
+    return (
+        <div className="TripDetails">
+            {trip && (
+                <>
+                    <h1>{trip.title}</h1>
+                    <p>{trip.description}</p>
+                </>
+            )}
+
+            {trip &&
+                trip.tasks.map((task) => (
+                    <li className="TaskCard card" key={task._id}>
+                        <h3>{task.title}</h3>
+                        <h4>Description:</h4>
+                        <p>{task.description}</p>
+                    </li>
+                ))}
+
+            <Link to={`/trips/edit/${tripId}`}>
+                <button>Edit</button>
+            </Link>
+
+            &nbsp;
+
+            <Link to="/trips">
+                <button>Back to trips</button>
+            </Link>
+        </div>
+    );
 }
 
 export default TripDetailsPage;

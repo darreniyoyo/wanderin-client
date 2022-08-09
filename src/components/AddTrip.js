@@ -1,8 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
 
-const API_URL = "http://localhost:5005";
-
 function AddTrip(props) {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
@@ -15,7 +13,7 @@ function AddTrip(props) {
     const storedToken = localStorage.getItem("authToken");
 
     axios
-      .post(`${API_URL}/api/projects`, requestBody, {
+      .post(`${process.env.REACT_APP_API_URL}/trips`, requestBody, {
         headers: { Authorization: `Bearer ${storedToken}` },
       })
       .then((response) => {

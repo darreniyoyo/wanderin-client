@@ -2,13 +2,9 @@
 
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
 
 import AddTrip from "../components/AddTrip"; //  <== IMPORT
  import TripCard from "../components/TripCard"; //  <==  IMPORT
-
-const API_URL = "http://localhost:5005";
-
 
 function TripListPage() {
   const [Trips, setTrips] = useState([]);
@@ -16,7 +12,7 @@ function TripListPage() {
   const getAllTrips = () => {
     const storedToken = localStorage.getItem("authToken");  
     axios
-      .get(`${API_URL}/api/trips`,
+      .get(`${process.env.REACT_APP_API_URL}/trips`,
       { headers: { Authorization: `Bearer ${storedToken}` } }
       )
       .then((response) => setTrips(response.data))
