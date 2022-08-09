@@ -25,22 +25,21 @@ function LoginPage(props) {
     const requestBody = { email, password };
 
     axios.post(`${process.env.REACT_APP_API_URL}/login`, requestBody)
-      .then((response) => {
-        console.log('JWT token', response.data.authToken );
-      
-				// Save the token in the localStorage.      
+    .then((response) => {
+        // Request to the server's endpoint `/auth/login` returns a response
+        // with the JWT string ->  response.data.authToken
+        console.log('JWT token', response.data.authToken);
+
         storeToken(response.data.authToken);
-				
-        // Verify the token by sending a request 
-        // to the server's JWT validation endpoint. 
-        authenticateUser();                     // <== ADD
+        authenticateUser();
+
         navigate('/');
-      })
-      .catch((error) => {
-        const errorDescription = error.response.data.message;
+    })
+    .catch((error) => {
+        const errorDescription = error.response.data.errorMessage;
         setErrorMessage(errorDescription);
-      })
-  };
+    })
+};
   
   return (
     <div className="LoginPage">
