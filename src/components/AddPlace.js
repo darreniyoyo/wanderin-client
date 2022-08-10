@@ -11,10 +11,8 @@ function AddPlace(props) {
   const handleSubmit = (e) => {      //  <== UPDATE THE FUNCTION
     e.preventDefault();
 
-    // We need the trip id when creating the new Place
-    const { tripId } = props;
     // Create an object representing the body of the POST request
-    const requestBody = { title, description, tripId };
+    const requestBody = { title, description };
 
     const storedToken = localStorage.getItem('authToken');
 
@@ -28,8 +26,8 @@ function AddPlace(props) {
         setDescription("");
       
         // Invoke the callback function coming through the props
-        // from the tripDetailsPage, to refresh the trip details
-        props.refreshTrip();
+        // from the placeDetailsPage, to refresh the place details
+        props.refreshPlace();
       })
       .catch((error) => console.log(error));
   };

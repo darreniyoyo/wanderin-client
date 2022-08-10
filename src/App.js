@@ -8,8 +8,12 @@ import HomePage from "./pages/HomePage"; // <== IMPORT
 import TripDetailsPage from "./pages/TripDetailsPage";
 import TripListPage from "./pages/TripListPage";
 import EditTripPage from "./pages/EditTripPage";
+import PlaceDetailsPage from "./pages/PlaceDetailsPage";
+import PlaceListPage from "./pages/PlaceListPage";
+import EditPlacePage from "./pages/EditPlacePage";
 import SignupPage from "./pages/SignupPage";
 import LoginPage from "./pages/LoginPage";
+
 
 // src/App.js
 // ... previous imports stay unchanged
@@ -40,6 +44,22 @@ function App() {
           element={ <IsPrivate> <EditTripPage /> </IsPrivate> } 
         />
         
+
+        <Route
+          path="/places"
+          element={ <IsPrivate> <PlaceListPage /> </IsPrivate> } 
+        />
+
+        <Route
+          path="/places/:placeId"
+          element={ <IsPrivate> <PlaceDetailsPage /> </IsPrivate> }
+        />
+
+        <Route
+          path="/places/edit/:placeId"
+          element={ <IsPrivate> <EditPlacePage /> </IsPrivate> } 
+        />
+
         <Route path="/signup" element={<IsAnon> <SignupPage /> </IsAnon>} />
         <Route path="/login" element={<IsAnon> <LoginPage /> </IsAnon>} />
 
@@ -47,6 +67,7 @@ function App() {
     </div>
   );
 }
+
 
 export default App;
 

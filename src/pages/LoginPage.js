@@ -6,7 +6,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from '../context/auth.context';
 
 function LoginPage(props) {
-  const [email, setEmail] = useState("");
+  const [name, setName] = useState("");
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState(undefined);
   
@@ -16,13 +16,13 @@ function LoginPage(props) {
   const { storeToken, authenticateUser } = useContext(AuthContext);
 
   
-  const handleEmail = (e) => setEmail(e.target.value);
+  const handleName = (e) => setName(e.target.value);
   const handlePassword = (e) => setPassword(e.target.value);
 
   
   const handleLoginSubmit = (e) => {
     e.preventDefault();
-    const requestBody = { email, password };
+    const requestBody = { name, password };
 
     axios.post(`${process.env.REACT_APP_API_URL}/login`, requestBody)
     .then((response) => {
@@ -46,12 +46,12 @@ function LoginPage(props) {
       <h1>Login</h1>
 
       <form onSubmit={handleLoginSubmit}>
-        <label>Email:</label>
+        <label>Name:</label>
         <input
-          type="email"
-          name="email"
-          value={email}
-          onChange={handleEmail}
+          type="name"
+          name="name"
+          value={name}
+          onChange={handleName}
         />
 
         <label>Password:</label>

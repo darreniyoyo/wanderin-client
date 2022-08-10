@@ -22,6 +22,9 @@ function Navbar() {
           <NavLink to="/trips">
             <button>Trips</button>
           </NavLink>
+          <NavLink to="/places">
+            <button>Places</button>
+          </NavLink>
         
           <button onClick={logOutUser}>Logout</button>
           <span>{user && user.name}</span>

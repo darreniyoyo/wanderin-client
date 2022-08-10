@@ -34,11 +34,11 @@ function TripDetailsPage(props) {
             )}
 
             {trip &&
-                trip.tasks.map((task) => (
-                    <li className="TaskCard card" key={task._id}>
-                        <h3>{task.title}</h3>
+                trip.places.map((places) => (
+                    <li className="TaskCard card" key={places._id}>
+                        <h3>{places.title}</h3>
                         <h4>Description:</h4>
-                        <p>{task.description}</p>
+                        <p>{places.description}</p>
                     </li>
                 ))}
 
