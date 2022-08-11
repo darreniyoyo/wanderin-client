@@ -1,11 +1,11 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { NavLink, useParams } from "react-router-dom";
+import { NavLink, useParams, useNavigate } from "react-router-dom";
 const storedToken = localStorage.getItem("authToken");
 
 function TripDetailsPage(props) {
     const [trip, setTrip] = useState(null);
-
+    const navigate = useNavigate();
     const { tripId } = useParams();
 
 
@@ -25,6 +25,16 @@ function TripDetailsPage(props) {
         getTrip();
     }, []);
 
+    const deleteTrip = () => {                  
+        axios
+          .delete(`${process.env.REACT_APP_API_URL}/trips/${tripId}`, {
+            headers: { Authorization: `Bearer ${storedToken}` },
+          })
+          .then(() => {
+            navigate("/trips");
+          })
+          .catch((err) => console.log(err));
+      };  
 
     return (
         <div className="TripDetails">
@@ -45,6 +55,7 @@ function TripDetailsPage(props) {
             <NavLink to="/trips">
                 <button>Back to trips</button>
             </NavLink>
+            <button onClick={deleteTrip}>Delete</button>
         </div>
     );
 }

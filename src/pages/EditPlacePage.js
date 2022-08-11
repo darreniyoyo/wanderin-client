@@ -47,7 +47,7 @@ function EditPlacePage(props) {
 
 
     return (
-        <div className="EditPlacePage">
+        <div className="EditTripPage">
             <h3>Edit the Place</h3>
 
             <form onSubmit={handleFormSubmit}>

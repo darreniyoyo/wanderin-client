@@ -17,10 +17,10 @@ function TripListPage() {
             .then((response) => setTrips(response.data))
             .catch((error) => console.log(error));
     };
-
     useEffect(() => {
         getAllTrips();
     }, []);
+    
     
     return (
         <div className="TripListPage">
@@ -33,7 +33,6 @@ function TripListPage() {
                   <TripCard key={trip._id} {...trip} />
                 );
             })}
-
         </div>
     );
 }

@@ -44,6 +44,7 @@ console.log(requestBody);
   
   const handleChange = (e) => {
     setLocation(e.target.value)
+    console.log(location)
   }
 
   return (

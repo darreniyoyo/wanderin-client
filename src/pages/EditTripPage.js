@@ -9,7 +9,7 @@ function EditTripPage(props) {
   const [location, setLocation] = useState(null);
   const [places, setPlace] = useState([]);
 
-  const { tripId } = useParams(); //  // Get the URL parameter `:tripId`
+  const { tripId } = useParams(); 
   const navigate = useNavigate();
 
   const storedToken = localStorage.getItem("authToken");
@@ -60,6 +60,7 @@ function EditTripPage(props) {
       });
   };
 
+
   return (
     <div className="EditTripPage">
       <h3>Edit Trip</h3>
@@ -75,7 +76,7 @@ function EditTripPage(props) {
         />
         <label>Place:</label>
         <select onChange={handleChange} multiple={false}>
-          <option value={places}> -- Select a place -- </option>
+          <option value={places}> -- somewhere else? -- </option>
           {places?.map((places) => (
             <option key={places._id} value={places.title}>
               {places.title}
@@ -101,5 +102,6 @@ function EditTripPage(props) {
     </div>
   );
 }
+
 
 export default EditTripPage;
