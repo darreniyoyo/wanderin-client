@@ -1,9 +1,12 @@
-function PlaceCard({ title, description }) {
+import { NavLink } from "react-router-dom";
+
+function PlaceCard({ title, description, _id }) {
     return (
       <div className="PlaceCard card">
         <h3>{title}</h3>
-        <h4>Description:</h4>
         <p>{description}</p>
+          <NavLink to={`/places/${_id}`}>More details
+      </NavLink>
       </div>
     );
   }

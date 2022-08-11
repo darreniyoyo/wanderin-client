@@ -11,7 +11,7 @@ function AddPlace(props) {
   const handleSubmit = (e) => {      //  <== UPDATE THE FUNCTION
     e.preventDefault();
 
-    // Create an object representing the body of the POST request
+  
     const requestBody = { title, description };
 
     const storedToken = localStorage.getItem('authToken');
@@ -21,13 +21,11 @@ function AddPlace(props) {
       { headers: { Authorization: `Bearer ${storedToken}` } }
     )
       .then((response) => {
-        // Reset the state to clear the inputs
+       
         setTitle("");
         setDescription("");
       
-        // Invoke the callback function coming through the props
-        // from the placeDetailsPage, to refresh the place details
-        props.refreshPlace();
+        props.refreshPlaces();
       })
       .catch((error) => console.log(error));
   };

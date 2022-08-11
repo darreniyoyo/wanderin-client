@@ -13,16 +13,10 @@ function EditPlacePage(props) {
 
     const storedToken = localStorage.getItem("authToken");
 
-    // This effect will run after the initial render and each time
-    // the place id coming from URL parameter `placeId` changes
     useEffect(() => {
         axios
             .get(`${process.env.REACT_APP_API_URL}/places/${placeId}`)
             .then((response) => {
-                /* 
-                  We update the state with the place data coming from the response.
-                  This way we set inputs to show the actual title and description of the project
-                */
                 const onePlace = response.data;
                 setTitle(onePlace.title);
                 setDescription(onePlace.description);
@@ -34,10 +28,9 @@ function EditPlacePage(props) {
 
     const handleFormSubmit = (e) => {
         e.preventDefault();
-        // Create an object representing the body of the PUT request
+
         const requestBody = { title, description };
 
-        // Make a PUT request to update the place
         axios
             .put(
                 `${process.env.REACT_APP_API_URL}/places/${placeId}`, 
@@ -45,8 +38,6 @@ function EditPlacePage(props) {
                 { headers: { Authorization: `Bearer ${storedToken}` } }
             )
             .then((response) => {
-                // Once the request is resolved successfully and the place
-                // is updated we navigate back to the details page
                 navigate(`/places/${placeId}`)
             });
     };

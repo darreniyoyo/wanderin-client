@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect} from "react";
 import axios from "axios";
 const storedToken = localStorage.getItem("authToken");
 
@@ -6,6 +6,7 @@ function AddTrip(props) {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [days, setDays] = useState("");
+  const [location, setLocation] = useState(null)
   const [places, setPlace] = useState([]);
 
 const getAllPlaces = () => {
@@ -17,8 +18,6 @@ const getAllPlaces = () => {
       .catch((error) => console.log(error));
 };
 
-// We set this effect will run only once, after the initial render
-// by setting the empty dependency array - []
 useEffect(() => {
   getAllPlaces();
 }, []);
@@ -26,8 +25,8 @@ useEffect(() => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    const requestBody = { title, description, days };
-
+    const requestBody = { title, description, days, location };
+console.log(requestBody);
 
     axios
       .post(`${process.env.REACT_APP_API_URL}/trips`, requestBody, {
@@ -37,14 +36,14 @@ useEffect(() => {
         setTitle("");
         setDescription("");
         setDays("");
-
-        props.refreshTrips(); //   <== ADD
+        setLocation("");
+        props.refreshTrips();
       })
       .catch((error) => console.log(error));
   };
   
   const handleChange = (e) => {
-    setPlace([e.target.value])
+    setLocation(e.target.value)
   }
 
   return (
@@ -60,12 +59,11 @@ useEffect(() => {
           value={title}
           onChange={(e) => setTitle(e.target.value)}
         />
+    <label>Place:</label>
      <select onChange={handleChange} multiple={false}> 
-      <option value={places}> -- Select a place -- </option>
-          
-      {places?.map((places) => <option key={places.title} value={places._id}>{places.title}</option>)}
+      <option value={places}> -- Select a place -- </option>  
+      {places?.map((places) => <option key={places._id} value={places.title}>{places.title}</option>)}
     </select>
-        
         <label>Description:</label>
         <textarea
           type="text"
@@ -75,12 +73,12 @@ useEffect(() => {
         />
         <label>Number of Days:</label>
         <input
-          type="Number"
+          type="number"
           name="days"
           value={days}
           onChange={(e) => setDays(e.target.value)}
         />
-        <button type="submit">Submit</button>
+        <button type="submit">Add Trip</button>
       </form>
     </div>
   );

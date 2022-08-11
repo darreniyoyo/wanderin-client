@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { Link, useParams } from "react-router-dom";
+import { NavLink, useParams } from "react-router-dom";
+const storedToken = localStorage.getItem("authToken");
 
 
 function PlaceDetailsPage(props) {
@@ -11,7 +12,9 @@ function PlaceDetailsPage(props) {
 
     const getPlace = () => {
         axios
-            .get(`${process.env.REACT_APP_API_URL}/Places/${placeId}`)
+            .get(`${process.env.REACT_APP_API_URL}/Places/${placeId}`, 
+            { headers: { Authorization: `Bearer ${storedToken}` } }
+            )
             .then((response) => {
                 const onePlace = response.data;
                 setPlace(onePlace);
@@ -33,24 +36,15 @@ function PlaceDetailsPage(props) {
                 </>
             )}
 
-            {place &&
-                place.trips.map((trip) => (
-                    <li className="TaskCard card" key={trip._id}>
-                        <h3>{trip.title}</h3>
-                        <h4>Description:</h4>
-                        <p>{trip.description}</p>
-                    </li>
-                ))}
-
-            <Link to={`/places/edit/${placeId}`}>
+            <NavLink to={`/places/edit/${placeId}`}>
                 <button>Edit</button>
-            </Link>
+            </NavLink>
 
             &nbsp;
 
-            <Link to="/places">
+            <NavLink to="/places">
                 <button>Back to places</button>
-            </Link>
+            </NavLink>
         </div>
     );
 }

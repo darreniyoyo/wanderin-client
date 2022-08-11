@@ -19,10 +19,6 @@ function EditTripPage(props) {
         axios
             .get(`${process.env.REACT_APP_API_URL}/trips/${tripId}`)
             .then((response) => {
-                /* 
-                  We update the state with the trip data coming from the response.
-                  This way we set inputs to show the actual title and description of the project
-                */
                 const oneTrip = response.data;
                 setTitle(oneTrip.title);
                 setDescription(oneTrip.description);
@@ -34,10 +30,10 @@ function EditTripPage(props) {
 
     const handleFormSubmit = (e) => {
         e.preventDefault();
-        // Create an object representing the body of the PUT request
+
         const requestBody = { title, description };
 
-        // Make a PUT request to update the trip
+
         axios
             .put(
                 `${process.env.REACT_APP_API_URL}/trips/${tripId}`, 
@@ -45,8 +41,7 @@ function EditTripPage(props) {
                 { headers: { Authorization: `Bearer ${storedToken}` } }
             )
             .then((response) => {
-                // Once the request is resolved successfully and the trip
-                // is updated we navigate back to the details page
+
                 navigate(`/trips/${tripId}`)
             });
     };

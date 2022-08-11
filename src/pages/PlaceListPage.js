@@ -5,7 +5,7 @@ import PlaceCard from "../components/PlaceCard";
 
 
 function PlaceListPage() {
-    const [places, setPlaces] = useState([]);
+    const [places, setPlaces] = useState(null);
 
     const storedToken = localStorage.getItem("authToken");
 
@@ -18,21 +18,18 @@ function PlaceListPage() {
             .catch((error) => console.log(error));
     };
 
-    // We set this effect will run only once, after the initial render
-    // by setting the empty dependency array - []
     useEffect(() => {
         getAllPlaces();
     }, []);
-
     return (
-        <div className="PlaceListPage">
+      <div className="PlaceListPage">
 
             <AddPlace refreshPlaces={getAllPlaces} />
             <hr />
 
-            {places?.map((place) => {
-                return (
-                  <PlaceCard key={place._id} {...place} />
+            {places && places?.map((place) => {
+              return (
+                <PlaceCard key={place._id} {...place} />
                 );
             })}
 
