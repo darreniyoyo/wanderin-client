@@ -1,6 +1,5 @@
 import { useState, useEffect} from "react";
 import axios from "axios";
-const storedToken = localStorage.getItem("authToken");
 
 function AddTrip(props) {
   const [title, setTitle] = useState("");
@@ -8,9 +7,10 @@ function AddTrip(props) {
   const [days, setDays] = useState("");
   const [location, setLocation] = useState(null)
   const [places, setPlace] = useState([]);
-
-const getAllPlaces = () => {
-  axios
+  const storedToken = localStorage.getItem("authToken");
+  
+  const getAllPlaces = () => {
+    axios
       .get(`${process.env.REACT_APP_API_URL}/places`, {
         headers: { Authorization: `Bearer ${storedToken}` },
       })
