@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { Link, useParams } from "react-router-dom";
+import { NavLink, useParams } from "react-router-dom";
 const storedToken = localStorage.getItem("authToken");
 
 function TripDetailsPage(props) {
@@ -31,28 +31,20 @@ function TripDetailsPage(props) {
             {trip && (
                 <>
                     <h1>{trip.title}</h1>
+                    <p>{trip.location}</p>
                     <p>{trip.description}</p>
                 </>
             )}
 
-            {/* {trip &&
-                trip.places.map((places) => (
-                    <li className="PlaceCard card" key={places._id}>
-                        <h3>{places.title}</h3>
-                        <h4>Description:</h4>
-                        <p>{places.description}</p>
-                    </li>
-                ))} */}
-
-            <Link to={`/trips/edit/${tripId}`}>
+            <NavLink to={`/trips/edit/${tripId}`}>
                 <button>Edit</button>
-            </Link>
+            </NavLink>
 
             &nbsp;
 
-            <Link to="/trips">
+            <NavLink to="/trips">
                 <button>Back to trips</button>
-            </Link>
+            </NavLink>
         </div>
     );
 }

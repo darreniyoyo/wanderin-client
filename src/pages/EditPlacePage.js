@@ -2,6 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";  //  <== IMPORT 
 
+const storedToken = localStorage.getItem("authToken");
 
 function EditPlacePage(props) {
     const [title, setTitle] = useState("");
@@ -15,7 +16,9 @@ function EditPlacePage(props) {
 
     useEffect(() => {
         axios
-            .get(`${process.env.REACT_APP_API_URL}/places/${placeId}`)
+            .get(`${process.env.REACT_APP_API_URL}/places/${placeId}`, {
+                headers: { Authorization: `Bearer ${storedToken}` },
+              })
             .then((response) => {
                 const onePlace = response.data;
                 setTitle(onePlace.title);
@@ -63,7 +66,7 @@ function EditPlacePage(props) {
                     onChange={(e) => setDescription(e.target.value)}
                 />
 
-                <button type="submit">Update Place</button>
+                <button type="submit">Save Changes</button>
             </form>
         </div>
     );

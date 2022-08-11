@@ -5,7 +5,8 @@ function PlaceCard({ title, description, _id }) {
       <div className="PlaceCard card">
         <h3>{title}</h3>
         <p>{description}</p>
-          <NavLink to={`/places/${_id}`}>More details
+          <NavLink to={`/places/${_id}`}>
+            <button>More details</button>
       </NavLink>
       </div>
     );
