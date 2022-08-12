@@ -80,7 +80,7 @@ console.log(requestBody);
           value={days}
           onChange={(e) => setDays(e.target.value)}
         />
-        <button class="btn btn-light" type="submit">Add Trip</button>
+        <button className="btn btn-light" type="submit">Add Trip</button>
       </form>
     </div>
   );
