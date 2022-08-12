@@ -2,12 +2,12 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import AddPlace from "../components/AddPlace";
 import PlaceCard from "../components/PlaceCard";
-const storedToken = localStorage.getItem("authToken");
 
 
 function PlaceListPage() {
-    const [places, setPlaces] = useState(null);
-
+  const [places, setPlaces] = useState(null);
+  
+  const storedToken = localStorage.getItem("authToken");
 
     const getAllPlaces = () => {
         axios

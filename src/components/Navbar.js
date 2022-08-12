@@ -19,12 +19,12 @@ function Navbar() {
       &nbsp;
       {isLoggedIn && (
         <>
-          <NavLink className="nav-link" to="/trips">
-            <button className="btn btn-sm btn-outline-secondary" type="button">Trips</button>
-          </NavLink>
-          &nbsp;
           <NavLink className="nav-link" to="/places">
           <button className="btn btn-sm btn-outline-secondary" type="button">Places</button>
+          </NavLink>
+          &nbsp;
+          <NavLink className="nav-link" to="/trips">
+            <button className="btn btn-sm btn-outline-secondary" type="button">Trips</button>
           </NavLink>
           &nbsp;
           <button className="btn btn-sm btn-outline-secondary" onClick={logOutUser}>Logout</button>
