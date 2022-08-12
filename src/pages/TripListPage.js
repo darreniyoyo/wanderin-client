@@ -2,10 +2,10 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import AddTrip from "../components/AddTrip";
 import TripCard from "../components/TripCard";
-const storedToken = localStorage.getItem("authToken");
 
 
 function TripListPage() {
+    const storedToken = localStorage.getItem("authToken");
     const [trips, setTrips] = useState(null);
 
 
