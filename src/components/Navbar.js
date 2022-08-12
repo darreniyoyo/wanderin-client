@@ -12,32 +12,33 @@ function Navbar() {
   } = useContext(AuthContext);
 
   return (
-    <nav>
-      <NavLink to="/">
-        <button>Home</button>
+    <nav className="navbar navbar-dark bg-dark">
+        <NavLink className="nav-link" to="/">
+        <button className="btn btn-sm btn-outline-secondary" type="button">Home</button>
       </NavLink>
-      
+      &nbsp;
       {isLoggedIn && (
         <>
-          <NavLink to="/trips">
-            <button>Trips</button>
+          <NavLink className="nav-link" to="/trips">
+            <button className="btn btn-sm btn-outline-secondary" type="button">Trips</button>
           </NavLink>
-          <NavLink to="/places">
-            <button>Places</button>
+          &nbsp;
+          <NavLink className="nav-link" to="/places">
+          <button className="btn btn-sm btn-outline-secondary" type="button">Places</button>
           </NavLink>
-        
-          <button onClick={logOutUser}>Logout</button>
+          &nbsp;
+          <button className="btn btn-sm btn-outline-secondary" onClick={logOutUser}>Logout</button>
           <span>{user && user.name}</span>
         </>
       )}
 
       {!isLoggedIn && (
         <>
-          <NavLink to="/signup"> <button>Sign Up</button> </NavLink>
-          <NavLink to="/login"> <button>Login</button> </NavLink>
+          <NavLink className="nav-link" to="/signup"> <button className="btn btn-sm btn-outline-secondary" type="button">Sign Up</button> </NavLink>
+          &nbsp;
+          <NavLink className="nav-link" to="/login"> <button className="btn btn-sm btn-outline-secondary" type="button">Login</button> </NavLink>
         </>
-      )}      
-
+      )}     
     </nav>
   );
 }

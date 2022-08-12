@@ -97,7 +97,7 @@ function EditTripPage(props) {
           value={days}
           onChange={(e) => setDays(e.target.value)}
         />
-        <button type="submit">Save Changes</button>
+        <button className="btn btn-light" type="submit">Save Changes</button>
       </form>
     </div>
   );

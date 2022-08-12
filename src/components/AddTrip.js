@@ -59,6 +59,7 @@ console.log(requestBody);
           name="title"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
+          required
         />
     <label>Place:</label>
      <select onChange={handleChange} multiple={false}> 
@@ -79,7 +80,7 @@ console.log(requestBody);
           value={days}
           onChange={(e) => setDays(e.target.value)}
         />
-        <button type="submit">Add Trip</button>
+        <button class="btn btn-light" type="submit">Add Trip</button>
       </form>
     </div>
   );

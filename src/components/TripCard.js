@@ -12,7 +12,7 @@ function TripCard ( { title, description, days, location, _id } ) {
       <p style={{ maxWidth: "400px" }}>{days} days</p>
       <p style={{ maxWidth: "400px" }}>{location}</p>
       <NavLink to={`/trips/${_id}`}>
-        <button>More Details</button>
+        <button className="btn btn-light">More Details</button>
       </NavLink>
     </div>
   );

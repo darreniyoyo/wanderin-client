@@ -6,7 +6,7 @@ function PlaceCard({ title, description, _id }) {
         <h3>{title}</h3>
         <p>{description}</p>
           <NavLink to={`/places/${_id}`}>
-            <button>More details</button>
+            <button className="btn btn-light">More details</button>
       </NavLink>
       </div>
     );

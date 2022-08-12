@@ -46,12 +46,13 @@ function LoginPage(props) {
       <h1>Login</h1>
 
       <form onSubmit={handleLoginSubmit}>
-        <label>Name:</label>
+        <label>Userame:</label>
         <input
           type="name"
           name="name"
           value={name}
           onChange={handleName}
+          required
         />
 
         <label>Password:</label>
@@ -60,9 +61,10 @@ function LoginPage(props) {
           name="password"
           value={password}
           onChange={handlePassword}
+          required
         />
 
-        <button type="submit">Login</button>
+        <button className="btn btn-light" type="submit">Login</button>
       </form>
       { errorMessage && <p className="error-message">{errorMessage}</p> }
 

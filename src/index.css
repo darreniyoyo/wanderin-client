@@ -1,20 +1,21 @@
 body {
+background-color: #282c34;
+margin: 0;
+}
+
+body {
   margin: 0;
 }
- 
+
 a {
   list-style: none;
   color: black;
 }
- 
-button,
-select {
-  padding: 5px 10px;
-  min-width: 50px;
-  margin: 5px;
-  font-size: 18px;
+.navbar {
+  justify-content: center;
 }
- 
+
+
 label {
   width: 200px;
   display: block;
@@ -28,22 +29,6 @@ textarea {
   margin: 10px;
 }
  
-nav {
-  background: #515f7d;
-  color: white;
-  padding: 0px 20px;
-  box-shadow: 0px 1px 2px gray;
-  width: 100%;
-  margin-bottom: 15px;
-  padding: 5px;
-}
- 
-nav li {
-  list-style: none;
-  color: white;
-  font-size: 24px;
-  font-weight: 600;
-}
  
 .card {
   width: 400px;
@@ -61,7 +46,7 @@ nav li {
 .AddPlace,
 .SignupPage,
 .LoginPage {
-  background: #f9eec3;
+  background: #5493e6;
   border: 1px solid grey;
   box-shadow: 0px 2px 3px grey;
   width: 400px;
@@ -73,7 +58,7 @@ nav li {
 }
  
 .EditTripPage {
-  background-color: rgb(239, 196, 88);
+  background-color: rgb(243, 207, 116);
 }
  
 .SignupPage,
@@ -89,17 +74,21 @@ nav li {
 .AddPlace form,
 .AddTrip form,
 .SignupPage form,
-.LoginPage form {
+.LoginPage form
+{
   display: flex;
   flex-direction: column;
   align-items: center;
 }
- 
 .AddPlace button,
 .AddTrip button {
   display: block;
 }
- 
+.TripDetails,
+.PlaceDetails {
+  color: white;
+}
 .PlaceCard {
   background-color: #dfeef9;
 }
+

@@ -52,7 +52,7 @@ function AddPlace(props) {
           onChange={(e) => setDescription(e.target.value)}
         />
 
-        <button type="submit">Add Place</button>
+        <button className="btn btn-light" type="submit">Add Place</button>
       </form>
     </div>
   );

@@ -12,7 +12,6 @@ function EditPlacePage(props) {
     const { placeId } = useParams(); //  // Get the URL parameter `:placeId` 
     const navigate = useNavigate();
 
-    const storedToken = localStorage.getItem("authToken");
 
     useEffect(() => {
         axios
@@ -66,7 +65,7 @@ function EditPlacePage(props) {
                     onChange={(e) => setDescription(e.target.value)}
                 />
 
-                <button type="submit">Save Changes</button>
+                <button className="btn btn-light" type="submit">Save Changes</button>
             </form>
         </div>
     );

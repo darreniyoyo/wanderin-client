@@ -37,13 +37,13 @@ function PlaceDetailsPage(props) {
             )}
 
             <NavLink to={`/places/edit/${placeId}`}>
-                <button>Edit</button>
+                <button className="btn btn-light">Edit</button>
             </NavLink>
 
             &nbsp;
 
             <NavLink to="/places">
-                <button>Back to places</button>
+                <button className="btn btn-light">Back to places</button>
             </NavLink>
         </div>
     );

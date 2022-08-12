@@ -47,15 +47,16 @@ function TripDetailsPage(props) {
             )}
 
             <NavLink to={`/trips/edit/${tripId}`}>
-                <button>Edit</button>
+                <button className="btn btn-light">Edit</button>
             </NavLink>
 
             &nbsp;
 
             <NavLink to="/trips">
-                <button>Back to trips</button>
+                <button className="btn btn-light">Back to trips</button>
             </NavLink>
-            <button onClick={deleteTrip}>Delete</button>
+            &nbsp;
+            <button className="btn btn-light" onClick={deleteTrip}>Delete</button>
         </div>
     );
 }

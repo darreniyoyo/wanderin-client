@@ -43,11 +43,20 @@ function SignupPage(props) {
             {errorMessage && <p className="error-message">{errorMessage}</p>}
 
             <form onSubmit={handleSignupSubmit}>
+                <label>Username:</label>
+                <input
+                    type="text"
+                    value={username}
+                    onChange={(e) => setUsername(e.target.value)}
+                    required
+                />
+
                 <label>Email:</label>
                 <input
                     type="email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
+                    required
                 />
 
                 <label>Password:</label>
@@ -55,16 +64,11 @@ function SignupPage(props) {
                     type="password"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
+                    required
                 />
 
-                <label>Username:</label>
-                <input
-                    type="text"
-                    value={username}
-                    onChange={(e) => setUsername(e.target.value)}
-                />
 
-                <button type="submit">Sign Up</button>
+                <button className="btn btn-light" type="submit">Sign Up</button>
             </form>
 
 
